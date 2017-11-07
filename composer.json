@@ -5,6 +5,7 @@
     "php": "7.*",
     "magento/product-community-edition": "^2.1"
   },
+  "version": "1.0.0",
   "type": "magento2-module",
   "license": [
     "MIT"
