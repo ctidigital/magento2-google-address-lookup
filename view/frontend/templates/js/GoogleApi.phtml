@@ -1,0 +1,25 @@
+<?php
+/**
+ * // @codingStandardsIgnoreFile
+ *
+ * @var $block \CtiDigital\GoogleAddressLookup\Block\Js\GoogleApi
+ */
+?>
+<?php if ($block->isEnabled()) : ?>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUkUlx6hVnUt1_UNxge29pxqDKkJfqyTo&libraries=places&callback=notifySubscribers"
+            async
+            defer></script>
+    <script>
+        require(['GoogleAddressLookup/model/address/addressFieldsMap'], function (addressFieldsMap) {
+            addressFieldsMap.setMap(<?php echo json_encode($block->getFieldsMap());?>);
+        });
+    </script>
+
+    <script>
+        var notifySubscribers = function () {
+            require(['GoogleAddressLookup/model/apiLoadListener'], function (loadListener) {
+                loadListener.isGoogleApiLoaded(true);
+            })
+        };
+    </script>
+<?php endif; ?>

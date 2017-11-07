@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Bartosz Herba <b.herba@ctidigital.com>
+ * @copyright 2017 CtiDigital Sp. z o.o.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="CtiDigital_GoogleAddressLookup::ctidigital" title="CtiDigital">
+                    <resource id="CtiDigital_GoogleAddressLookup::google_autocomplete" title="Google Autocomplete" />
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

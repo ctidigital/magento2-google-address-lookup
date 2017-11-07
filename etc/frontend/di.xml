@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package  rapid 
+ 
+ * @author Bartosz Herba <b.herba@ctidigital.com>
+ * @copyright 2017 CtiDigital Sp. z o.o.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Checkout\Block\Onepage">
+        <arguments>
+            <argument name="layoutProcessors" xsi:type="array">
+                <item name="CtiDigital_GoogleAddressLookup::CheckoutLayoutProcessor" xsi:type="object">CtiDigital\GoogleAddressLookup\Block\Checkout\LayoutProcessor</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="CtiDigital\GoogleAddressLookup\Block\Js\GoogleApi">
+        <arguments>
+            <argument name="fieldsMap" xsi:type="array">
+                <item name="street[0]" xsi:type="string">route</item>
+                <item name="street[1]" xsi:type="string">street_number</item>
+                <item name="street_1" xsi:type="string">route</item>
+                <item name="street_2" xsi:type="string">street_number</item>
+                <item name="country" xsi:type="string">country</item>
+                <item name="city" xsi:type="string">locality|postal_town</item>
+                <item name="postcode" xsi:type="string">postal_code</item>
+                <item name="zip" xsi:type="string">postal_code</item>
+                <item name="region" xsi:type="string">administrative_area_level_1</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="CtiDigital\GoogleAddressLookup\Block\Checkout\LayoutProcessor">
+        <arguments>
+            <argument name="fieldsConfig" xsi:type="array">
+                <item name="address_finder" xsi:type="array">
+                    <item name="component" xsi:type="string">CtiDigital_GoogleAddressLookup/js/form/element/addressLookup</item>
+                    <item name="config" xsi:type="array">
+                        <item name="template" xsi:type="string">CtiDigital_GoogleAddressLookup/form/field</item>
+                        <item name="elementTmpl" xsi:type="string">CtiDigital_GoogleAddressLookup/form/element/input</item>
+                        <item name="customEntry" xsi:type="string">null</item>
+                    </item>
+                    <item name="dataScope" xsi:type="string">shippingAddress.custom_attributes.address_finder</item>
+                    <item name="label" xsi:type="string">Address Finder</item>
+                    <item name="provider" xsi:type="string">checkoutProvider</item>
+                    <item name="sortOrder" xsi:type="string">110</item>
+                </item>
+                <item name="telephone" xsi:type="array">
+                    <item name="sortOrder" xsi:type="string">50</item>
+                </item>
+                <item name="country_id" xsi:type="array">
+                    <item name="component" xsi:type="string">CtiDigital_GoogleAddressLookup/js/form/element/countrySelect</item>
+                    <item name="sortOrder" xsi:type="string">100</item>
+                </item>
+                <item name="street" xsi:type="array">
+                    <item name="component" xsi:type="string">GoogleAddressLookup/form/element/group</item>
+                    <item name="sortOrder" xsi:type="string">120</item>
+                </item>
+                <item name="city" xsi:type="array">
+                    <item name="component" xsi:type="string">CtiDigital_GoogleAddressLookup/js/form/element/input</item>
+                    <item name="sortOrder" xsi:type="string">130</item>
+                </item>
+                <item name="region" xsi:type="array">
+                    <item name="component" xsi:type="string">CtiDigital_GoogleAddressLookup/js/form/element/input</item>
+                    <item name="sortOrder" xsi:type="string">140</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                </item>
+                <item name="postcode" xsi:type="array">
+                    <item name="component" xsi:type="string">CtiDigital_GoogleAddressLookup/js/form/element/input</item>
+                    <item name="sortOrder" xsi:type="string">150</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>

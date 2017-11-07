@@ -1,0 +1,26 @@
+{
+  "name": "ctidigital/module-google-address-lookup",
+  "description": "Provides an address lookup service on a Magento 2 store powered by the Google Places API",
+  "require": {
+    "php": "7.*",
+    "magento/product-community-edition": "^2.1"
+  },
+  "type": "magento2-module",
+  "license": [
+    "MIT"
+  ],
+  "authors": [
+    {
+      "name": "Bartosz Herba",
+      "email": "bartoszherba@gmail.com"
+    }
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "CtiDigital\\GoogleAddressLookup\\": ""
+    }
+  }
+}

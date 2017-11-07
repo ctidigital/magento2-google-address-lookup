@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package CtiDigital\GoogleAddressLookup
+ * @author Bartosz Herba <b.herba@ctidigital.com>
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="checkout" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="after.body.start">
+            <block class="CtiDigital\GoogleAddressLookup\Block\Js\GoogleApi"
+                   name="ctidigital.googleaddresslookup.googleapi.js"
+                   as="googleapi"
+                   template="CtiDigital_GoogleAddressLookup::js/GoogleApi.phtml" />
+        </referenceContainer>
+        <referenceBlock name="customer_address_edit">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">CtiDigital_GoogleAddressLookup::address/edit.phtml</argument>
+            </action>
+        </referenceBlock>
+    </body>
+</page>
+
