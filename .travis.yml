@@ -1,0 +1,26 @@
+dist: trusty
+language: php
+php:
+  - 7.0
+services:
+  - mysql
+sudo: required
+env:
+  global:
+    - MODULE_PATH=app/code/CtiDigital/GoogleAddressLookup
+    - DB=magento2
+    - DB_TEST=magento2_test
+    - DB_PASSWORD=password123
+    - DB_HOST=localhost
+    - MODULE_NAME=ctidigital/module-google-address-lookup
+  matrix:
+    - TEST_SUITE=js
+      MAGE_VERSION=2.1.7
+      MAGENTO_MODE=developer
+install:
+  - bash -c "if [ '$TEST_SUITE' = 'js' ]; then ./Travis/tasks/deps/install-node.sh; fi"
+  - bash -c "if [ '$TEST_SUITE' = 'js' ]; then ./Travis/tasks/deps/install-grunt-cli.sh; fi"
+before_script:
+  - echo "{\"http-basic\":{\"repo.magento.com\":{\"username\":\"${MAGENTO_USERNAME}\",\"password\":\"${MAGENTO_PASSWORD}\"}}}" > auth.json
+script:
+  - ./Travis/js-jasmine-runner.sh
