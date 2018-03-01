@@ -20,8 +20,8 @@
             <argument name="fieldsMap" xsi:type="array">
                 <item name="street[0]" xsi:type="string">street_number</item>
                 <item name="street[1]" xsi:type="string">route</item>
-                <item name="street_1" xsi:type="string">route</item>
-                <item name="street_2" xsi:type="string">street_number</item>
+                <item name="street_1" xsi:type="string">street_number</item>
+                <item name="street_2" xsi:type="string">route</item>
                 <item name="country" xsi:type="string">country</item>
                 <item name="city" xsi:type="string">locality|postal_town</item>
                 <item name="postcode" xsi:type="string">postal_code</item>
