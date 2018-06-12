@@ -27,8 +27,8 @@ define([], function () {
                 value = address["street_number"] + ' ' + address["route"];
             }
             if(fieldsString=="administrative_area_level_1" || fieldsList[i]=="administrative_area_level_1") {
-                if (document.getElementById('region_id')) {
-                    var regionSelector = document.getElementById('region_id');
+                if (document.getElementById('region_id') || document.getElementsByName('region_id')[0]) {
+                    var regionSelector = document.getElementById('region_id') || document.getElementsByName('region_id')[0];
                     var region = address[fieldsString];
                     for (i = 0; i < regionSelector.length; i++) {
                         if (regionSelector.options[i].text === region) {

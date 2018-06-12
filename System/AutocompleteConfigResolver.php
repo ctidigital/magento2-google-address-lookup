@@ -38,6 +38,14 @@ class AutocompleteConfigResolver implements AutocompleteConfigResolverInterface
     }
 
     /**
+     * @return bool
+     */
+    public function getUseRegions(): bool
+    {
+        return $this->scopeConfig->getValue(self::PATH_USE_REGIONS);
+    }
+
+    /**
      * @return string
      */
     public function getApiKey(): string

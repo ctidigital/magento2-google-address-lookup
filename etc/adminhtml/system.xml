@@ -25,6 +25,10 @@
                     <label>Google Autocomplete Api Key</label>
                     <comment><![CDATA[For more details please read <a href="https://developers.google.com/maps/documentation/javascript/places-autocomplete" target="_blank" alt="Autocomplete Documentation">Google Documentation</a>]]></comment>
                 </field>
+                <field id="use_regions" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Should the Region field be populated by the Address Autocomplete?</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
             </group>
         </section>
     </system>

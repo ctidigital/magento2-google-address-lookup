@@ -17,11 +17,17 @@ interface AutocompleteConfigResolverInterface
      */
     const PATH_IS_ENABLED = 'ctidigital_sales/autocomplete/enable';
     const PATH_API_KEY = 'ctidigital_sales/autocomplete/api_key';
+    const PATH_USE_REGIONS = 'ctidigital_sales/autocomplete/use_regions';
 
     /**
      * @return bool
      */
     public function getIsEnabled(): bool;
+
+    /**
+     * @return bool
+     */
+    public function getUseRegions(): bool;
 
     /**
      * @return string
