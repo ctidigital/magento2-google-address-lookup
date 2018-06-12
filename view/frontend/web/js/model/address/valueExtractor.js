@@ -19,13 +19,26 @@ define([], function () {
         var fieldsList = fieldsString.split(separator);
 
         var value = '';
-        for (var i = 0; i < fieldsList.length; i++) {
+        for (let i = 0; i < fieldsList.length; i++) {
             if (address[fieldsList[i]]) {
                 value = address[fieldsList[i]];
-                break;
+            }
+            if(fieldsString == "street" || fieldsList[i]=="street"){
+                value = address["street_number"] + ' ' + address["route"];
+            }
+            if(fieldsString=="administrative_area_level_1" || fieldsList[i]=="administrative_area_level_1") {
+                if (document.getElementById('region_id') || document.getElementsByName('region_id')[0]) {
+                    var regionSelector = document.getElementById('region_id') || document.getElementsByName('region_id')[0];
+                    var region = address[fieldsString];
+                    for (i = 0; i < regionSelector.length; i++) {
+                        if (regionSelector.options[i].text === region) {
+                            regionSelector.selectedIndex = i;
+                            break;
+                        }
+                    }
+                }
             }
         }
-
         return value;
     };
 });

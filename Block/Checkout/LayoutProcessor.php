@@ -78,9 +78,10 @@ class LayoutProcessor implements LayoutProcessorInterface
     {
         $this->updateStreetFields($this->addressFields['children']['street'], 'shippingAddress');
 
-        // region_id field is no longer required
-        unset($this->addressFields['children']['region']['filterBy']);
-        unset($this->addressFields['children']['region_id']);
+        if(false === $this->configResolver->getUseRegions()){
+            unset($this->addressFields['children']['region']['filterBy']);
+            unset($this->addressFields['children']['region_id']);
+        }
 
         foreach ($this->fieldsConfig as $fieldName => $config) {
             $field = &$this->addressFields['children'][$fieldName];
@@ -104,7 +105,7 @@ class LayoutProcessor implements LayoutProcessorInterface
                     continue;
                 }
 
-                if ('region' === $fieldName) {
+                if ('region' === $fieldName || 'region_id' === $fieldName) {
                     $payment = $this->copyRegionLayoutFromShippingAddress($payment, $fieldName);
                 }
 
@@ -169,8 +170,8 @@ class LayoutProcessor implements LayoutProcessorInterface
      */
     protected function copyRegionLayoutFromShippingAddress(array $payment, string $fieldName): array
     {
-        $region = $this->addressFields['children']['region'];
-        $payment['children']['form-fields']['children'][$fieldName] = $region;
+        $value = $this->addressFields['children'][$fieldName];
+        $payment['children']['form-fields']['children'][$fieldName] = $value;
 
         return $payment;
     }

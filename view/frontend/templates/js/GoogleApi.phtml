@@ -5,8 +5,10 @@
  * @var $block \CtiDigital\GoogleAddressLookup\Block\Js\GoogleApi
  */
 ?>
-<?php if ($block->isEnabled()) : ?>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUkUlx6hVnUt1_UNxge29pxqDKkJfqyTo&libraries=places&callback=notifySubscribers"
+<?php if ($block->isEnabled()) :
+    $vAPIKey = $block->getApiKey();
+    ?>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $vAPIKey ?>&libraries=places&callback=notifySubscribers"
             async
             defer></script>
     <script>
