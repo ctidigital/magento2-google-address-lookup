@@ -6,7 +6,7 @@
  */
 ?>
 <?php if ($block->isEnabled()) : ?>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUkUlx6hVnUt1_UNxge29pxqDKkJfqyTo&libraries=places&callback=notifySubscribers"
+    <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo $block->getApiKey(); ?>&libraries=places&callback=notifySubscribers"
             async
             defer></script>
     <script>
