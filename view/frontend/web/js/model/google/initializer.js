@@ -44,7 +44,7 @@ define(['GoogleAddressLookup/model/address/addressData'], function (addressData)
             value: function initAutocomplete(el) {
                 var _this = this;
 
-                var instance = new google.maps.places.Autocomplete(el, { types: ['address'] });
+                var instance = new google.maps.places.Autocomplete(el);
                 if (this.form.country()) {
                     instance.setComponentRestrictions({ 'country': this.form.country() });
                 }
